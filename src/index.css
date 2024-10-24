@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #1c1c1c;
+}
+
+@media (max-width: 1500px) {
+  .name img {
+    @apply ml-4; /* margin-left: 14px */
+  }
+
+  table {
+    @apply border-0; /* Remove borda da tabela */
+  }
+
+  table thead {
+    @apply border-none h-1 m-[-1px] overflow-hidden absolute w-1 p-0;
+    clip: rect(
+      0 0 0 0
+    ); /* Não há equivalente direto em Tailwind, manter no CSS */
+  }
+
+  .tr {
+    @apply border-b border-gray-300 block mb-4 px-1; /* Define borda e espaçamento */
+  }
+
+  table td {
+    @apply border-b border-gray-300 block text-right text-sm; /* Fonte 14px = text-sm */
+  }
+
+  table td::before {
+    content: attr(
+      data-label
+    ); /* A propriedade `content` não é suportada pelo Tailwind, mantém-se no CSS */
+    @apply float-left font-bold uppercase;
+  }
+}
