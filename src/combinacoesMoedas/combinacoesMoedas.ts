@@ -467,7 +467,6 @@ const combinacoesMoedas = [
 ];
 
 const selectCombinacoes: Record<string, string> = {
-  "": "Selecione uma moeda...",
   "USD-BRL": "Dólar Americano/Real Brasileiro",
   "USD-BRLT": "Dólar Americano/Real Brasileiro Turismo",
   "CAD-BRL": "Dólar Canadense/Real Brasileiro",

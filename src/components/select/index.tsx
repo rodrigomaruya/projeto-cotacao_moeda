@@ -35,6 +35,9 @@ export function Select() {
         value={searchMoeda}
         className="py-2 w-full max-w-3xl outline-none"
       >
+        <option value="" disabled selected>
+          Selecione uma moeda...
+        </option>
         {moedas.map((moeda, index) => (
           <option key={index} value={moeda.codigo}>
             {moeda.descricao}
