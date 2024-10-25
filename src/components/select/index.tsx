@@ -4,8 +4,8 @@ import { FaSearch } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 interface MoedaProps {
-  chave: string;
-  valor: string;
+  codigo: string;
+  descricao: string;
 }
 
 export function Select() {
@@ -13,12 +13,13 @@ export function Select() {
   const [searchMoeda, setSearchMoeda] = useState("");
   const navi = useNavigate();
   useEffect(() => {
-    const arrayDeObjetos = Object.entries(selectCombinacoes).map(
-      ([chave, valor]) => {
-        return { chave, valor };
-      }
-    );
-    setMoeda(arrayDeObjetos);
+    const orderedSelectCombinacoes: MoedaProps[] = Object.entries(
+      selectCombinacoes
+    )
+      .sort((a, b) => a[1].localeCompare(b[1])) // Ordena com base nos valores (a[1] e b[1])
+      .map(([codigo, descricao]) => ({ codigo, descricao }));
+
+    setMoeda(orderedSelectCombinacoes);
   }, []);
 
   function handleClick() {
@@ -35,8 +36,8 @@ export function Select() {
         className="py-2 w-full max-w-3xl outline-none"
       >
         {moedas.map((moeda, index) => (
-          <option key={index} value={moeda.chave}>
-            {moeda.valor}
+          <option key={index} value={moeda.codigo}>
+            {moeda.descricao}
           </option>
         ))}
       </select>
